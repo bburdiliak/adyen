@@ -98,6 +98,7 @@ module Adyen
         http_request = Net::HTTP::Post.new(endpoint.path)
         http_request.basic_auth(@username, @password)
         http_request.set_form_data(request.form_data)
+        http_request.set_content_type('application/x-www-form-urlencoded', { charset: 'UTF-8' })
 
         case response = http.request(http_request)
         when Net::HTTPOK
